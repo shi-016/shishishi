@@ -1,5 +1,17 @@
 import math
 
+BLACK=1
+WHITE=2
+
+board = [
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0],
+        [0,0,1,2,0,0],
+        [0,0,2,1,0,0],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0],
+]
+
 def can_place_x_y(board, stone, x, y):
     """
     石を置けるかどうかを調べる関数。
@@ -51,15 +63,6 @@ def random_place(board, stone):
         y = random.randint(0, len(board) - 1)
         if can_place_x_y(board, stone, x, y):
             return x, y
-
-class PandaAI(object):
-
-    def face(self):
-        return "🐼"
-
-    def place(self, board, stone):
-        x, y = random_place(board, stone)
-        return x, y
 
 class EagerAI:
     def face(self):
