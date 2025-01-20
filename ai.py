@@ -13,6 +13,26 @@ board = [
         [0,0,0,0,0,0],
 ]
 
+def can_place_x_y(board, stone, x, y):
+    """Check if a stone can be placed at the specified coordinates."""
+    if not (0 <= x < len(board[0]) and 0 <= y < len(board)):
+        return False
+    if board[y][x] != 0:
+        return False
+    
+    # Check all eight directions
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+    for dx, dy in directions:
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < len(board[0]) and 0 <= ny < len(board) and board[ny][nx] == 3 - stone:
+            while 0 <= nx < len(board[0]) and 0 <= ny < len(board) and board[ny][nx] == 3 - stone:
+                nx += dx
+                ny += dy
+            if 0 <= nx < len(board[0]) and 0 <= ny < len(board) and board[ny][nx] == stone:
+                return True
+
+    return False
+
 class EagerAI:
     def face(self):
         return "🐼"
