@@ -120,9 +120,6 @@ class EagerAI:
                     board[fy][fx] = stone
 
     def get_valid_moves(self, board, stone):
-        """
-        石を置ける有効なマスを取得する。
-        """
         valid_moves = []
         for y in range(len(board)):
             for x in range(len(board[0])):
